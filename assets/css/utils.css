@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Heebo;
+    overflow: hidden;
+    height: 100vh;
+}
+:root {
+    --clr1: #d66b00;
+    --clr2: #82d930;
+    --clr3: #0074d9;
+}
