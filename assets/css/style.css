@@ -146,8 +146,8 @@ main {
     cursor: pointer;
 }
 .current-token {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     position: absolute;
     top: 15px;
@@ -160,27 +160,7 @@ main {
     background-color: var(--clr3);
 }
 
-@media screen and (max-width: 600px) {
-    main {
-        padding: 20px 50px;
-    }
-    .cell {
-        width: 30px;
-        height: 30px;
-        border: 2px solid var(--clr1);
-        border-radius: 50%;
-        margin: 5px;
-    }
-    .greet-user {
-        line-height: 1.6rem;
-        font-size: 1rem;
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-    .greet-user p {
-        margin: 8px 0;
-    }
-}
+
 
 /* Game */
 
@@ -234,3 +214,65 @@ footer a:hover span {
 }
 
 /* Footer */
+
+
+
+@media screen and (max-width: 600px) {
+    main {
+        padding: 20px 50px;
+    }
+    .cell {
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--clr1);
+        border-radius: 50%;
+        margin: 5px;
+    }
+    .greet-user {
+        line-height: 1.6rem;
+        font-size: 1rem;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .greet-user p {
+        margin: 8px 0;
+    }
+    .play-btn {
+        width: 100%;
+        margin-bottom: 8px;
+        display: block;
+    }
+    .play-btn.how {
+        margin-left: 0;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        padding: 0 40px;
+    }
+    .footer-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    #current-player {
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        background: var(--clr1);
+        top: 15px;
+        left: 15px;
+        color: #fff;
+        padding: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .current-token {
+        width: 40px;
+        height: 40px;
+    }
+}
