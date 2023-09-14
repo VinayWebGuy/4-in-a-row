@@ -18,38 +18,43 @@ document.addEventListener("DOMContentLoaded", function () {
         const directions = [
             [0, 1], [1, 0], [1, 1], [1, -1]
         ];
-
+    
         for (const [dx, dy] of directions) {
             let count = 1;
+            const winningSequence = [[row, col]];
+    
             for (let i = 1; i <= 3; i++) {
                 const newRow = row + i * dx;
                 const newCol = col + i * dy;
                 if (newRow >= 0 && newRow < 6 && newCol >= 0 && newCol < 7 &&
                     gameBoard[newRow][newCol] === currentPlayerTurn) {
                     count++;
+                    winningSequence.push([newRow, newCol]);
                 } else {
                     break;
                 }
             }
-
+    
             for (let i = 1; i <= 3; i++) {
                 const newRow = row - i * dx;
                 const newCol = col - i * dy;
                 if (newRow >= 0 && newRow < 6 && newCol >= 0 && newCol < 7 &&
                     gameBoard[newRow][newCol] === currentPlayerTurn) {
                     count++;
+                    winningSequence.push([newRow, newCol]);
                 } else {
                     break;
                 }
             }
-
+    
             if (count >= 4) {
-                return true;
+                return winningSequence;
             }
         }
-
+    
         return false;
     }
+    
 
     function handleCellClick(event) {
         const cell = event.target;
@@ -68,12 +73,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 moveAudio.play();
 
                 if (checkForWin(row, col)) {
+                    const winningSequence = checkForWin(row, col);
                     currentPlayer.innerText = `Player ${currentPlayerTurn} wins!`;
                     document.getElementById("win-modal").style.display = "block";
-                    document.getElementById("winning-player").innerHTML = currentPlayerTurn
+                    document.getElementById("winning-player").innerHTML = currentPlayerTurn;
                     board.removeEventListener("click", handleCellClick);
                     winAudio.play();
-                } else {
+            
+                     // Highlight the winning sequence with a single border
+                        for (const [winRow, winCol] of winningSequence) {
+                            const winCellIndex = winRow * 7 + winCol;
+                            const winCell = cells[winCellIndex];
+                            winCell.classList.add("winning-cell");
+                        }
+                 }
+                  else {
                     currentPlayerTurn = 3 - currentPlayerTurn;
                     currentPlayer.innerText = `Player ${currentPlayerTurn}'s turn`;
                 }
